@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滑块的滑动</title>
+	<style>
+	*{ margin: 0;padding: 0; }
+	.slider{ width: 600px;height: 100px;margin: 50px auto;background: #f1f1f1;padding-top: 5px; }
+	.slider-val{ 
+		width: 100px;height: 20px;border:none;border-radius: 5px;display: block;
+		outline: none;margin: 5px auto;
+	}
+	.slider-bg{ width: 500px;height: 30px;margin: 10px auto; }
+	.slider-label{ 
+		width: 500px;height: 5px;position: absolute;
+		background: url(img/slider.png)no-repeat;
+		background-position: 0 0;
+	}
+	.slider-pointer{  
+		width: 20%;height: 5px;
+		background: url(img/slider.png)no-repeat;z-index: 998;
+		background-position: 0 -21px;
+	}
+	.slider-pos{
+		width: 13px;height: 15px;position: absolute;
+		background: url(img/slider.png)no-repeat;background-position: 0 -40px;
+		margin: -10px 0 0 -3px;z-index: 999;
+    	cursor: pointer;
+	}
+	.slider-start{ left: 0%; }
+	.slider-end{ left: 20%; }
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+<div class="slider">
+	<input type="slider" class="slider-val" id="slider-input" />
+	<div class="slider-bg">
+		<div class="slider-label">
+			<!-- 滑块背景 -->
+			<div class="slider-pointer">
+			<!-- 滑块当前位置 -->
+			</div>
+			<div class="slider-pos slider-start" data-flag="true"></div>
+			<div class="slider-pos slider-end" data-flag="true"></div>
+		</div>
+		
+	</div>
+	
+<script>
+	// $(".slider-pos").on('mousedown', function() {
+	// 	var _this 	   = $(this),
+	// 		label      = _this.parents('.slider-label'),
+	// 		labelWidth = parseInt(label.css("width") ),
+	// 		labelLeft  = parseInt(label.offset().left ),
+	// 		left       = 0;
+
+	// 	_this.mousemove(function(event) {
+	// 		var evt = event || window.event,
+	// 			x   = evt.clientX,
+	// 			y   = evt.clientY;
+
+	// 		var pointer = _this.siblings('.slider-pointer'),
+	// 			poWidth = parseInt( pointer.css("width") ),//当前长度应该是
+	// 			poLeft  = parseInt( pointer.offset().left );
+
+			
+	// 		$("#slider-input").val( "x:"+x + " y:" + y );
+	// 		left = ( x - labelLeft )/labelWidth;
+	// 		$(".slider-pointer").css("width", x-labelLeft+"px");
+	// 		_this.css("left", x-labelLeft+"px");
+
+	// 		console.log("xy"+x+" "+y+"   wl"+poWidth+" "+poLeft);
+	// 	});
+
+	// 	_this.mouseout(function() {
+	// 		// console.log(labelWidth+"  "+labelLeft);
+	// 	});
+	// });
+	$(".slider-start").on('mousedown', function() {
+		var _this 	  = $(this),
+			label 	  = _this.parents(".slider-label"),
+			labelLeft = parseInt( label.offset().left );//每次都是自己的
+		var flag = _this.attr("data-flag");
+
+		console.log(flag);
+		if ( flag ) {
+			_this.mousemove(function(event) {
+				var evt = event || window.event,
+					x   = evt.clientX,
+					y   = evt.clientY;
+
+				var startPos = parseInt( _this.offset().left ),//开始位置
+					endPos   = parseInt( _this.siblings('.slider-end').offset().left );//结束位置
+
+				// console.log( startPos + " " +endPos);
+				_this.css("left", x - labelLeft+"px");
+				$(".slider-pointer").css("margin-left", x - labelLeft+"px");
+				$(".slider-pointer").css("width", endPos-startPos+"px");//长度等于开始位置减结束位置
+			});
+			_this.attr("data-flag", false);
+		};
+			
+	});
+	$(".slider-start").on('mouseup', function() {
+		$(this).attr("data-flag", false);
+	});
+	$(".slider-start").on('mouseout', function() {
+		$(this).attr("data-flag", false);
+	});
+	
+
+	$(".slider-end").on('mousedown', function() {
+		var _this 	  = $(this),
+			label 	  = _this.parents(".slider-label"),
+			labelLeft = parseInt( label.offset().left );//每次都是自己的
+
+		_this.mousemove(function(event) {
+			var evt = event || window.event,
+				x   = evt.clientX,
+				y   = evt.clientY;
+
+			var endPos   = parseInt( _this.offset().left ),//开始位置
+				startPos = parseInt( _this.siblings('.slider-start').offset().left );//结束位置
+
+			// console.log( startPos + " " +endPos);
+			_this.css("left", x - labelLeft+"px");
+			$(".slider-pointer").css("width", endPos-startPos+"px");//长度等于开始位置减结束位置
+		});
+	});
+	$(".slider-end").on('mouseup', function() {
+		alert("the end");
+	});
+
+</script>
+</div>
+</body>
+</html>

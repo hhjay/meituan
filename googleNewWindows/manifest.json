@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+
+  "name": "GoogleNewWindows",
+  "description": "Google click do new windows",
+  "version": "1.1",
+
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+     "http://*/*",
+    "https://*/*",
+    "tabs"
+  ],
+  "content_scripts": [{
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["jquery-1.11.1.js", "main.js"],
+      "runat" : "document_end"
+  }],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "icons" : {
+    "48" : "icon-48.png",
+    "128" : "icon-128.png"
+  }
+}

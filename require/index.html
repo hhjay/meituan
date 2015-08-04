@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>requireJs</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.19/require.min.js"></script>
+</head>
+<body>
+<h1>My Project</h1>
+<script type="text/javascript">
+
+require.config({
+	baseUrl: "/require/js",
+	paths: {
+		"js": "js"
+	},
+	waitSeconds: 15
+});
+require( [
+	"some/model", 
+	"a", 
+	"b"
+	],
+	function(some, a) {
+		// console.log(baseUrl);
+		console.log("test"); 	
+	} 
+);
+
+</script>
+</body>
+</html>

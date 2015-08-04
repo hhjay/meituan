@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>双日期输入</title>
+	<style>
+	*{ margin: 0;padding: 0;font-size: 16px;color:#000; }
+	.date{ width: 80%;height: 50px;margin: 50px auto;background: #f6f4f7;padding: 10px; }
+	.date .btn{ 
+		width: 100px;height: 30px;
+		outline: none;background: #fff;
+		border: 0;cursor: pointer; 
+		border: 1px solid #000;
+	}
+	.date .month{ 
+		border-top-left-radius: 10px;border-right: none;
+		border-bottom-left-radius: 10px; 
+	}
+	.date .week{ 
+		margin-left: -4px;border-left: none;
+		border-top-right-radius: 10px;border-bottom-right-radius: 10px; 
+	}
+	.date .active{ background: rgb(0, 163, 223);border: none; }
+	.date .date-to{ width: 200px;height: 25px;outline: none;font-size: 14px; }
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+	<!-- 目前要求：月／周（上周五到本周四） -->
+	<div class="date">
+		<span class="lable">频度</span>
+		<button class="btn month active" data-chooce="month">月</button>
+		<button class="btn week" data-chooce="week">周</button>
+		<input type="text" class="date-to" />
+	</div>
+	<script>
+	/**
+	* 将时间显示到input里面  7/17-7/23
+	* @param start 		开始时间 20150717
+	* @param end 		结束时间 20150723
+	* @param rootNode 	显示的根节点
+	*/
+	var fnShowDate = function(start, end, rootNode){
+		var sMonth = (start + "").substr(4, 2),
+			eMonth = (end + "").substr(4, 2),
+			sDay   = (start + "").substr(-2, 2),
+			eDay   = (end + "").substr(-2, 2);
+		var temp = "";
+
+		var subDay = parseInt(eDay)-parseInt(sDay);
+		if ( subDay > 27 ) {//一个月
+			temp += (start + "").substr(0, 4) + "年" + sMonth + "月";
+		}else{//最近的一个星期
+			if ( parseInt(sMonth) < 10 ) {
+				sMonth = sMonth.substr(1, 1);
+			};
+			if ( parseInt(eMonth) < 10 ) {
+				eMonth = eMonth.substr(1, 1);
+			};
+			temp += sMonth + "/" + sDay + " - " + eMonth + "/" + eDay;
+		}
+		rootNode.find('.date-to').val(temp);
+	}
+
+	/**
+	* 返回最近一月 即上个月( 开始和结束时间 )
+	*/
+	getMonthDay = function() {
+		var myDate 	 = new Date(),
+			nowYears = myDate.getFullYear(),// 今年
+			nowMonth = myDate.getMonth();
+
+		var monthStartDate = new Date(nowYears, nowMonth-1, 1),//上月1号
+			nextMStartDate = new Date(nowYears, nowMonth, 1),// 本月份
+			oneDay 		   = 1000 * 60 * 60 * 24,//一天的毫秒数
+			days 		   = (nextMStartDate.getTime() - monthStartDate.getTime())/oneDay;
+
+		var monthEndDate = new Date(nowYears, nowMonth-1, days);
+
+		var monthObj = {};
+		monthObj["start"] = formatDate(monthStartDate);
+		monthObj["end"]	  = formatDate(monthEndDate);
+		return monthObj;
+	}
+	/**
+	* 返回最近的一周的对象( 开始和结束时间 )
+	* @param locMonth 		当前月份
+	* @param locYears 		当前年份
+	*/
+	getWeekDay = function() {
+		var myDate   = new Date(),
+			week 	 = myDate.getDay(),
+			// 获取今天是本周的第几天 这里按1234567算 加3是因为找到上周五
+			minusDay = week != 0 ? week-1 : 6;
+
+    	var oneDay = 1000*60*60*24,//一天的毫秒数
+    		// 上周星期五的格式化
+			preWeekFri = new Date( myDate.getTime()-(oneDay*(minusDay+3)) );
+
+			// 本周四的格式化
+			nowtWeekThu = new Date( myDate.getTime()-(oneDay*(minusDay-3)) );
+		var weekObj = {};
+		weekObj["start"] = formatDate(preWeekFri);
+		weekObj["end"]	 = formatDate(nowtWeekThu);
+		return weekObj;
+	}
+	/**
+	* 格式化日期
+	* @param ddate 传入的日期参数 例如mydate = new Date()
+	*/
+    function formatDate(ddate) {
+        var myyear = ddate.getFullYear();
+        var mymonth = ddate.getMonth()+1;
+        var myweekday = ddate.getDate();
+
+        if(mymonth==0){
+            mymonth = 12;
+            myyear = parseInt(myyear)-1;
+        }
+        if(mymonth < 10){
+            mymonth = "0" + mymonth;
+        }
+        if(myweekday < 10){
+            myweekday = "0" + myweekday;
+        }
+        return (myyear+""+mymonth + "" + myweekday);
+    }
+
+	$(".btn").on('click', function() {// 点击效果
+		var _this   = $(this),
+			forNode = _this.parent();//返回给所谓的父级元素
+		if ( _this.attr("data-chooce")=="week" ) {
+			_this.siblings('button').removeClass('active');
+			_this.addClass('active');
+
+			var nearWeek = getWeekDay();
+			fnShowDate(nearWeek["start"], nearWeek["end"], forNode);
+		}else{
+			_this.siblings('button').removeClass('active');
+			_this.addClass('active');
+
+			var nearMonth = getMonthDay();
+			fnShowDate(nearMonth["start"], nearMonth["end"], forNode);
+		}
+	});
+
+
+	</script>
+</body>
+</html>
