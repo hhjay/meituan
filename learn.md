@@ -17,4 +17,23 @@
 > * http://blog.fens.me/nodejs-requirejs/
 > * RequireJS的模块化加载需要web server的支持，通过本地文件的方式是不行的
 
+### DB Learn
+> * select 10,10也会扫描全表
+> * 文件的io和查不是一个方面？
+> * 7万条数据排序找用12s，不排序用0.2s
+> * 磁盘和固态硬盘
+> * order by区分度 快速查询的效果
+> * 索引类型(varchar....int....boolen)匹配
+> * 不加索引扫全表
 
+### framemaker
+``` javascript
+
+<script> var orgList = new Array();</script>
+<#list orgViewList as orgView>
+	<script> 
+		orgList.push( ${orgView.baseData.id} );
+	</script>
+</#list>
+
+```
