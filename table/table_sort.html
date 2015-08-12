@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>table排序</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+<table id="tableTest" width="400" border="1">
+    <thead id="tableHead">
+        <tr>
+            <th>数字</th>
+            <th>字母</th>
+            <th>空格</th>
+            <th>212</th>  
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        <tr>
+            <td>2</td>
+            <td>bbb</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>eee</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>        
+        <tr>
+            <td>3</td>
+            <td>ccc</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>ddd</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>aaa</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+<input type="button" id="sort" value="表格排序" />
+<script>
+    
+
+    // tableHead.addEventListener("click", function(evt){
+    //     if ( evt.target && evt.target.nodeName.toUpperCase() == "TH" ) {
+    //         // console.log( evt.path[0].cellIndex====$(evt.target).index() );
+    //        // console.log( $(evt.target).index() );
+    //             var _thisPos = $(evt.target).index();
+    //             for (var i = 0; i < tr.length; i++) {
+    //                 arr[i] = tr[i];
+    //             };
+    //             var sortTd = function(tr1, tr2){
+    //                 if ( isAsc ) {
+    //                     return tr1.cells[_thisPos].innerHTML > tr2.cells[_thisPos].innerHTML
+    //                 }else{
+    //                     return tr1.cells[_thisPos].innerHTML < tr2.cells[_thisPos].innerHTML
+    //                 }
+    //             }
+    //             arr.sort( sortTd );
+
+    //             for (var j = 0; j < arr.length; j++) {
+    //                 tableBody.appendChild( arr[j] );
+    //             };
+    //             isAsc = !isAsc;
+    //         };
+    // }, false);
+
+    var isAsc = true;
+    $('#tableHead').on('click', 'th', function(){
+        var tableHead = $('#tableHead'),
+            tableBody = document.getElementById('tableBody');
+        var arr   = [];
+            
+        var tr = tableBody.getElementsByTagName("tr");
+
+        var _thisPos = $(this).index();
+        for (var i = 0; i < tr.length; i++) {
+            arr[i] = tr[i];
+        };
+
+
+        var sortTd = function(tr1, tr2){
+            if ( isAsc ) {
+                return tr1.cells[_thisPos].innerHTML > tr2.cells[_thisPos].innerHTML
+            }else{
+                return tr1.cells[_thisPos].innerHTML < tr2.cells[_thisPos].innerHTML
+            }
+        }
+        arr.sort( sortTd );
+
+        for (var j = 0; j < arr.length; j++) {
+            tableBody.appendChild( arr[j] );
+        };
+        isAsc = !isAsc;
+    });
+
+
+
+
+
+
+    // window.onload = function () {
+    //     var oTable = document.getElementById('tableTest');
+    //     var oTbody = oTable.tBodies[0];
+    //     var oBtn = document.getElementById('sort');
+    //     var arr = [];//用来存放每一个tr
+    //     var isAsc = true;//用来判断升序，还是降序
+    //     oBtn.onclick = function () {
+    //         for (var i = 0; i < oTbody.rows.length; i++ ) {
+    //             arr[i] = oTbody.rows[i];//这里是把每一个tr存放到一个数组，而不是排序的依据（这里是cells[0].innerHTML）    
+    //         }
+    //         //数组根据cells[0].innerHTML来排序
+    //         var sort1 = function (td1, td2){
+    //             if(isAsc) {
+    //                 return (td1.cells[1].innerHTML) > (td2.cells[1].innerHTML);
+    //             } else {
+    //                 return (td2.cells[1].innerHTML) > (td1.cells[1].innerHTML);
+    //             }
+    //         }
+    //         arr.sort( sort1 );
+    //         //把排序后的tr 重新插入tbody
+    //         for(var j =0; j < arr.length; j++ ) {
+    //             oTbody.appendChild(arr[j]);
+    //         }
+    //         //判断升序，降序
+    //         isAsc = !isAsc;
+    //     } 
+    // }
+</script>
+</body>
+</html>
