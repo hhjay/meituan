@@ -22,11 +22,74 @@
 	}
 	.date .active{ background: rgb(0, 163, 223);border: none; }
 	.date .date-to{ width: 200px;height: 25px;outline: none;font-size: 14px; }
+
+/*
+	.date-input{
+		width: 220px;height: 230px;
+		background: #eee;position: absolute;
+		left: 194px;top: 135px;
+		z-index: 999;display: none;
+	}
+	.date-header{
+		width: 216px;height: 30px;margin: 1px auto;
+		border: 1px solid #e78f08;background: #f6a828;
+	    color: #fff;font-weight: bold;border-radius: 5px;
+	    font-size: 14px;
+	}
+	.date-header span{ 
+		width: 20px;height: 20px;margin-top: 3px;
+		cursor: pointer;text-align: center;line-height: 20px; 
+	}
+	.date-header span:hover{ background: rgb(254, 248, 219);color:#f6a828;  }
+	.date-header .date-title{
+		width: 152px;height: 30px;float: left;
+	    text-align: center;line-height: 30px;
+	}
+	.date-input .date-table{
+		width: 98%;margin-left: 1%;
+	}
+	.date-input .date-table th,.date-header .date-table td{
+		width: 13%;text-align: center;height: 25px;
+		text-align: center;line-height: 25px;
+	}
+	.date-input .date-table th{ color: #000; }
+	.date-input .date-table td{
+		border: 1px solid #cccccc;background: #f6f6f6;
+	    font-weight: bold;color: #1c94c4;
+	}*/
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
+
+ <!--  <div class="date-input">
+                <div class="date-header">
+                    <span class="month-chooce" style="float:left;"> - </span>
+                    <div class="date-title">
+                        <i date-day="years">2015</i>年&nbsp;
+                        <i date-day="month">7</i>月
+                    </div>
+                    <span class="month-chooce" style="float:right;"> + </span>
+                </div>
+                <table class="date-table">
+                    <thead>
+                        <tr>
+                            <th>一</th>
+                            <th>二</th>
+                            <th>三</th>
+                            <th>四</th>
+                            <th>五</th>
+                            <th>六</th>
+                            <th>日</th>
+                        </tr>
+                    </thead id="dateTableBody">
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div> -->
 	<!-- 目前要求：月／周（上周五到本周四） -->
+	
 	<div class="date">
 		<span class="lable">频度</span>
 		<button class="btn month active" data-chooce="month">月</button>
@@ -144,6 +207,35 @@
 		}
 	});
 
+	// $("#weekOrMonth").on('focus', function() {
+	// 	$(".date-input").show();//显示
+
+	// 	var nowadays = new Date(),//今天
+	// 		nowYears = nowadays.getFullYear(),// 今年
+	// 		nowMonth = nowadays.getMonth(),
+	// 		oneDays  = 1000 * 60 * 60 * 24,
+	// 		_this    = $(this),
+	// 		monthOrW = _this.siblings('button').attr("data-chooce");
+
+	// 	if ( monthOrW=="week" ) {
+	// 		var locaDate = new Date(nowYears, nowMonth-1, 1),//上月1号
+	// 			nextDate = new Date(nowYears, nowMonth, 1),// 本月份
+	// 			days     = (nextDate.getTime() - locaDate.getTime())/oneDays;
+
+	// 		var html = "";
+	// 		//获取这个月1号是星期几
+	// 		var firstWeek = locaDate.getDay();
+	// 		for (var i = 0; i < firstWeek; i++) {
+	// 			html += "<td>&nbsp;</td>";
+	// 		};
+	// 		for (var i = 1; i <= days; i++) {
+	// 			html += "<td>" + i + "</td>";
+	// 		};
+
+	// 		$("#dateTableBody").html( html );
+	// 	};
+
+	// });
 
 	</script>
 </body>
