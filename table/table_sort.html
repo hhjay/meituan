@@ -92,10 +92,13 @@
 
 
         var sortTd = function(tr1, tr2){
+            var td1 = tr1.cells[_thisPos].innerHTML,
+                td2 = tr2.cells[_thisPos].innerHTML;
             if ( isAsc ) {
-                return tr1.cells[_thisPos].innerHTML > tr2.cells[_thisPos].innerHTML
+                
+                return td1 > td2;
             }else{
-                return tr1.cells[_thisPos].innerHTML < tr2.cells[_thisPos].innerHTML
+                return td1 < td2;
             }
         }
         arr.sort( sortTd );
