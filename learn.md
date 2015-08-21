@@ -43,3 +43,20 @@
 > * 滑动选择具体数值 http://egorkhmelev.github.io/jslider/
 > * 感觉还不错的js学习网站 http://caibaojian.com/javascript-stoppropagation-preventdefault.html
 > * 好用的日期组件 http://www.daterangepicker.com/
+
+### 判断是否在点击的范围之内
+``` javascript
+<script>
+	$(document).on('mouseup', function(event) {
+		var e = event ?  event : window.event;
+		var node = e.target ? e.target : e.srcElement;
+		if ( root.find('.RP-date-input').length!==0 ) {//本来就已经显示过的才可以
+			var _con = $(".RP-date-input");
+			if ( !_con.is(node) && _con.has(node).length === 0 ) {
+				test.hide(e);
+			}
+		}
+			
+	});
+</script>
+```
