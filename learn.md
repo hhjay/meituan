@@ -45,6 +45,7 @@
 > * 好用的日期组件 http://www.daterangepicker.com/
 
 ### 判断是否在点击的范围之内
+> * method 1  http://segmentfault.com/q/1010000000452465
 ``` javascript
 <script>
 	$(document).on('mouseup', function(event) {
@@ -60,3 +61,17 @@
 	});
 </script>
 ```
+> * method 2
+``` javascript
+<div id="codediv" onmouseover ="isOut=false" onmouseoout ="isOut=true"/>
+<script>
+	document.onmousedown = function(){
+	   	var codediv=document.getElementById("codediv");
+	   	if(codediv.style.display!="none" && isOut){
+	      	codediv.style.display!="none";
+	   	}
+	}	
+</script>
+```
+
+
