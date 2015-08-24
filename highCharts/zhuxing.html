@@ -12,42 +12,6 @@
 </head>
 <body>
 	<div class="high"></div>
-	<!-- <table id="datatable" style="margin-left:20px;" class="table table-bordered table-striped">
-	    <thead>
-		    <tr>
-		        <th></th>
-		        <th>Jane</th>
-		        <th>John</th>
-		    </tr>
-		</thead>
-		<tbody>
-		    <tr>
-		      <th>Apples</th>
-		      <td>3</td>
-		      <td>4</td>
-		    </tr>
-		    <tr>
-		      <th>Pears</th>
-		      <td>2</td>
-		      <td>0</td>
-		    </tr>
-		    <tr>
-		      <th>Plums</th>
-		      <td>5</td>
-		      <td>11</td>
-		    </tr>
-		    <tr>
-		      <th>Bananas</th>
-		      <td>1</td>
-		      <td>1</td>
-		    </tr>
-		    <tr>
-		      <th>Oranges</th>
-		      <td>2</td>
-		      <td>4</td>
-		    </tr>
-	    </tbody>
-  </table> -->
 <script>
 $(document).ready(function(){
 
@@ -130,6 +94,18 @@ $(document).ready(function(){
             data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
 
         }]
+
+        // series: {
+        //         events: {
+        //         //控制图标的图例legend不允许切换 点击下边之后效果
+        //             legendItemClick: function (event) {  
+        //                 //TODO
+        //                 return flase; //return  true 则表示允许切换
+        //             }
+        //         }
+        //     }
+        // }
+
     };
     $('.high').highcharts(high);
 });

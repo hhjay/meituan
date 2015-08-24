@@ -43,24 +43,24 @@
 	.RP-date-input .RP-date-table{
 		width: 100%;margin-left: 0;
 	}
-	.RP-date-input .RP-date-table li,.RP-date-input #dateTableBody li,.RP-date-input #dateTableBody .RP-nodate-li{
+	.RP-date-input .RP-date-table li,.RP-date-input .dateTableBody li,.RP-date-input .dateTableBody .RP-nodate-li{
 		float: left;margin-left: 1px;
 		width: 28px;text-align: center;height: 25px;
 		text-align: center;line-height: 25px;
 	}
 
 	.RP-date-input .RP-date-table li{ color: #000;margin-left: 3px; }
-	.RP-date-input #dateTableBody{ float: left;width: 100%; }
-	.RP-date-input #dateTableBody li{
+	.RP-date-input .dateTableBody{ float: left;width: 100%; }
+	.RP-date-input .dateTableBody li{
 		border: 1px solid #cccccc;background: #f6f6f6;
 	    font-weight: bold;color: #1c94c4;
 	    cursor: pointer;margin-top: 2px;
 	}
-	.RP-date-input #dateTableBody li:hover{
+	.RP-date-input .dateTableBody li:hover{
 		border:1px solid #fbcb09;color: #c77405;
 		background: #fdf5ce;font-weight: bold;
 	}
-	.RP-date-input #dateTableBody .RP-nodate-li{
+	.RP-date-input .dateTableBody .RP-nodate-li{
 		background: #eee;border: none;margin-left: 3px;
 	}
 	</style>
@@ -78,6 +78,7 @@ $(document).ready(function($) {
 		this.element = element;
 	};
 	RangePicker.prototype = {
+		showFlag: 0,//标记是否显示日期
 		left: function(node){//获得当前这个node的左偏移量
 			if ( node ) {
 				return node.offset().left;
@@ -113,7 +114,7 @@ $(document).ready(function($) {
 			var firstWeek = locaDate.getDay();
 			firstWeek = firstWeek == 0 ? 7 : firstWeek + 1;
 			for (var i = 0; i <= firstWeek; i++) {
-				temp += "<p class='RP-nodate-li'>&nbsp;</p>";
+				temp += "<p class='RP-nodate-li'></p>";
 			};
 			for (var i = 1; i <= days; i++) {
 				temp += "<li>" + i + "</li>";
@@ -131,7 +132,7 @@ $(document).ready(function($) {
     					'<div class="RP-date-table">' +
     					        '<li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li><li>日</li>' +
     					'</div>' + 
-    					'<ul id="dateTableBody">' + 
+    					'<ul class="dateTableBody">' + 
     						temp +
     					'</ul>' +
     				'</div>';
@@ -167,6 +168,9 @@ $(document).ready(function($) {
 	function RP(el){
 		var test = new RangePicker(el),
 			root = $("body");
+
+
+		console.log( test.showFlag );
 		if ( el.is('input') ) {
 			el.on("click"||"focus"||"keyup", function(event) {
 				test.show(event);
@@ -175,18 +179,24 @@ $(document).ready(function($) {
 			el.on("click", function(event) {
 				test.show(event);
 			});
+
+			
 		}
 		
 		$(document).on('mouseup', function(event) {
 			var e = event ?  event : window.event;
 			var node = e.target ? e.target : e.srcElement;
-			if ( root.find('.RP-date-input').length!==0 ) {//本来就已经显示过的才可以
-				var _con = $(".RP-date-input");
-				if ( !_con.is(node) && _con.has(node).length === 0 ) {
+			var _con = $(".RP-date-input");
+			if ( root.find('.RP-date-input').length!==0 ) {// 本来就已经显示过的才可以
+				if ( !_con.is(node) && _con.has(node).length === 0 ) {// 点击外面的要消失
 					test.hide(e);
+				}else{// 点击里面判断是否点击在日期上面
+					_con.find('.dateTableBody').on('click', 'li', function(event) {
+						alert("adadad");
+					});	
 				}
-			}
-				
+			};
+			
 		});
 	}
 
