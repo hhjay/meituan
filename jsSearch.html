@@ -116,7 +116,7 @@
 			trH    = $("#riderListBody tr").height();
 
 		var successNum = []; // 成功的个数
-		$(".shade").hide();
+		$(".shade").remove();
 		for (var i = 0; i < span.length; i++) {
 			span[i].style.color = "#000";
 			var _this   = span[i],
@@ -173,6 +173,12 @@
 		};
 
 		$('.a').append( html );
+
+		$('#riderListDiv').append( html );
+		
+        // var firstSuccess = "#riderListBody tr:eq(" + successNum[0] + ")";//使其可以直接滚到第一个位置
+        // var successTop = $(firstSuccess).offset().top - divY;
+        // $("#riderListDiv").scrollTop(successTop);
 	}
 
 
@@ -181,8 +187,13 @@
 		name = _this.val();
 	});
 	$("#searchName").change(function(event) {
-		name = name.toLowerCase();//全部改成小写 以模糊匹配
-		fnSerachName();
+		if ( $(this).val()==="" ) {
+            $(".shade").remove();
+        }else{
+            name = name.toLowerCase();//全部改成小写 以模糊匹配
+			fnSerachName();
+        }
+		
 	});
 	</script>
 </body>
