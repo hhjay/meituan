@@ -40,7 +40,8 @@
 
 ```
 ### FE插件
-> * 滑动选择具体数值 http://egorkhmelev.github.io/jslider/
+> * 左右滑动选择具体数值 http://egorkhmelev.github.io/jslider/   (横着的啊)
+> * 上下滑动选择具体数值 https://jqueryui.com/resources/demos/slider/range-vertical.html  (总是有人喜欢竖的)
 > * 感觉还不错的js学习网站 http://caibaojian.com/javascript-stoppropagation-preventdefault.html
 > * 好用的日期组件 http://www.daterangepicker.com/
 
