@@ -75,4 +75,8 @@
 </script>
 ```
 
+### js Learn
+> * 很赞的js学习网站：http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html
+> * 百度的webapp学习：http://clouda.baidu.com/sample
+
 
