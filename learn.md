@@ -77,6 +77,8 @@
 
 ### js Learn
 > * 很赞的js学习网站：http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html
-> * 百度的webapp学习：http://clouda.baidu.com/sample
+> * js: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions#Functions_as_event_handlers
+> * webapp工具：http://clouda.baidu.com/sample
+> * ajax不能return 的解决方法 http://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success
 
 
