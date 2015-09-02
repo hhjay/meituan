@@ -11,6 +11,7 @@
 > * git checkout huanghuijie #切换到已经存在的分支
 > * git status (主要是文件名那些)查看本地分支与远端分支代码的区别 
 > * git diff (主要是文件)具体的代码区别
+> * (develop) $ git merge webreport1.1 (主要是合并代码)
 
 > * @media screen and (max-width)
 
@@ -80,5 +81,5 @@
 > * js: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions#Functions_as_event_handlers
 > * webapp工具：http://clouda.baidu.com/sample
 > * ajax不能return 的解决方法 http://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success
-
+> * 好吧，我现在才知道(1)->function fnA(){ TODO };和(2)->var fnA = function(){ TODO }的区别，(1)主要是在整个文件中注册了一个全局变量可以在上下文调用，但(2)只能在下文用到
 
