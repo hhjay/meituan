@@ -82,4 +82,10 @@
 > * webapp工具：http://clouda.baidu.com/sample
 > * ajax不能return 的解决方法 http://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success
 > * 好吧，我现在才知道(1)->function fnA(){ TODO };和(2)->var fnA = function(){ TODO }的区别，(1)主要是在整个文件中注册了一个全局变量可以在上下文调用，但(2)只能在下文用到
+> * 数的格式化 http://bbs.csdn.net/topics/360197979 http://stackoverflow.com/questions/1068284/format-numbers-in-javascript
+> * hightcharts的tooltip的提示框的位置 http://stackoverflow.com/questions/11966286/highcharts-tooltip-always-on-right-side-of-cursor
+	http://ahumbleopinion.com/customizing-highcharts-tooltip-positioning/
+
+
+
 
