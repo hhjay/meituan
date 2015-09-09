@@ -86,6 +86,23 @@
 > * hightcharts的tooltip的提示框的位置 http://stackoverflow.com/questions/11966286/highcharts-tooltip-always-on-right-side-of-cursor
 	http://ahumbleopinion.com/customizing-highcharts-tooltip-positioning/
 
+### less/sass
+
+### p2p借书 
+> * ->共享你的图书：扫描你的条形码，分享 ->在看条形码api
+	https://www.juhe.cn/docs/api/id/52  huanghuijie 密码名
+	http://union.csdl.ac.cn/Reader/union_result.jsp?kind=simple&title=2&match=qx&word=9787115299222&and_or=and&ziliao=&c1=%BC%EC+%CB%F7
+	http://developers.douban.com/wiki/?title=book_v2#get_book   要哭惨了 豆瓣有api。。。我竟然找了一下午
+> * ->摄像头获取你的条形码
+	http://www.dcloud.io/docs/api/zh_cn/barcode.shtml
+	http://blog.csdn.net/theforever/article/details/8251671
+	http://www.tuicool.com/articles/auQJzq
+	http://m.oschina.net/blog/299168
+> * ->手机调用电话号码
+
+### 查看你担心公司的备案状态 http://webservice.36wu.com/ICPServic.asmx
+### 很多api  http://www.cnblogs.com/clarence/p/3151617.html
+
 
 
 
