@@ -1,6 +1,5 @@
 ### learn some
 > * cp -R banma* ../project/
-> * this.style.display = "none";alert(this);
 
 > * https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF
 > * git checkout -b huanghuijie #新建分支
@@ -85,6 +84,8 @@
 > * 数的格式化 http://bbs.csdn.net/topics/360197979 http://stackoverflow.com/questions/1068284/format-numbers-in-javascript
 > * hightcharts的tooltip的提示框的位置 http://stackoverflow.com/questions/11966286/highcharts-tooltip-always-on-right-side-of-cursor
 	http://ahumbleopinion.com/customizing-highcharts-tooltip-positioning/
+> * aMap Api 解决刚开始加载不能出现图标的问题.amap-layers img { max-width: none; }
+> * aMap Api 解决中心点的问题，其实就是我自己没有好好看api amap.setFitView()  移除路线poyeline.setMap(null);
 
 ### less/sass
 
