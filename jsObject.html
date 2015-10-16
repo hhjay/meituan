@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>javascript Object</title>
+</head>
+<body>
+<script>
+	function Cat(name, color) {
+		this.name = name;
+		this.color = color;
+	};
+	Cat.prototype.type = "per";
+	var cat1 = new Cat("dog", "red");
+	var cat2 = new Cat("monkey", "blue");
+	// console.log( cat1.constructor === Cat );// true constructor属性指向构造函数
+	// console.log( cat1 instanceof Cat );//原型对象和实例对象
+	console.log( cat2.hasOwnProperty("type") );
+</script>
+</body>
+</html>
